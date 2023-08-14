@@ -1,4 +1,4 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Layout } from "../../shared/layout";
 import { useImageById } from "../../hooks/image-service/useImageById";
 import { ImageCard } from "../../components/image-card";
