@@ -18,4 +18,4 @@ yarn dev
 
 This application was deployed using Vercel's CLI.
 
-demo:
+demo: https://urbetrack-challenge-images.vercel.app
