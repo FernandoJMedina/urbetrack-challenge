@@ -9,9 +9,10 @@ import { motion } from "framer-motion";
 
 interface ImageCardProps {
   card: CardType;
+  detailed?: boolean;
 }
 
-export function ImageCard({ card }: ImageCardProps) {
+export function ImageCard({ card, detailed }: ImageCardProps) {
   const saveCard = useSaveImages((state) => state.saveCard);
   const removeCard = useSaveImages((state) => state.removeCard);
   const cards = useSaveImages((state) => state.cards);
@@ -36,10 +37,17 @@ export function ImageCard({ card }: ImageCardProps) {
     toast.success("Image has been saved!");
   }
   return (
-    <motion.div layout key={card.id}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ delay: 0.2 }}
+      layout
+      key={card.id}
+    >
       <Card>
         <AspectRatio ratio={16 / 8}>
-          <Link to={`/images/${card.id}`}>
+          <Link aria-disabled={detailed} to={`/images/${card.id}`}>
             <img
               src={card.download_url}
               alt={`A picture of the author ${card.author}`}
@@ -52,6 +60,11 @@ export function ImageCard({ card }: ImageCardProps) {
             />
           </Link>
         </AspectRatio>
+        <Flex mt="3" direction="column" gap="1">
+          <Text size="1">width: {card.width}</Text>
+          <Text size="1">height: {card.height}</Text>
+          <Text size="1">download url: {card.download_url}</Text>
+        </Flex>
         <Flex mt="4" justify="between">
           <Text weight="bold">Author: {card.author}</Text>
           <Flex gap="3">

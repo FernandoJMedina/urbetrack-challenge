@@ -2,7 +2,6 @@ import { Layout } from "../../shared/layout";
 import { ImageCard } from "../../components/image-card";
 import { useSaveImages } from "../../stores/useSaveImages";
 import { Grid, Text } from "@radix-ui/themes";
-import { motion } from "framer-motion";
 
 export function MyImages() {
   const myCards = useSaveImages((state) => state.cards);

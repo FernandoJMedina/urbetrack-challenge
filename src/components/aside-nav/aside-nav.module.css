@@ -3,7 +3,7 @@
   background-color: ghostwhite;
   width: 100%;
   max-width: 320px;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   padding: 2rem;
   display: flex;

@@ -12,7 +12,7 @@ export async function getImagesService() {
   return response.data;
 }
 
-export async function getImagesByIdService(id: string) {
+export async function getImagesByIdService(id?: string) {
   const response = await api.get<ImageCard>(`/id/${id}/info`);
   return response.data;
 }
