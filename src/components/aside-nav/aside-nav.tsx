@@ -4,16 +4,21 @@ import { useNavigationModal } from "../../stores/useNavigationModal";
 import { Avatar, Button, Flex } from "@radix-ui/themes";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUser } from "../../stores/useUser";
+import { useSaveImages } from "../../stores/useSaveImages";
 
 export function AsideNav() {
   const name = useUser((state) => state.name);
   const isVisible = useNavigationModal((state) => state.isVisible);
   const setIsVisible = useNavigationModal((state) => state.setIsVisible);
+  const clearUserStorage = useUser.persist.clearStorage;
+  const clearSavedImages = useSaveImages.persist.clearStorage;
   const navigate = useNavigate();
 
   function handleLogout() {
     setIsVisible();
     navigate("/");
+    clearSavedImages();
+    clearUserStorage();
   }
   return (
     <AnimatePresence mode="wait">
